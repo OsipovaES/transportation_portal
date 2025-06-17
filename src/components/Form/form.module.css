@@ -29,6 +29,43 @@
   margin-top: -6px;
 }
 
+.selectWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.selectWrapper label {
+  font-size: 14px;
+  color: #4a4a4a;
+  margin-bottom: 6px;
+}
+
+.select {
+  padding: 10px 12px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #cbd5db;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #5db3a9;
+  box-shadow: 0 0 0 3px rgba(93, 179, 169, 0.15);
+}
+
+.select option {
+  color: #333;
+  background-color: #fff;
+}
+
 @media (max-width: 570px) {
   .form {
     width: 90%;

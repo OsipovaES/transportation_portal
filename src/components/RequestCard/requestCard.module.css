@@ -1,0 +1,92 @@
+.card {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 15px;
+  width: 300px;
+  box-sizing: border-box;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+}
+
+.title {
+  font-size: 18px;
+  margin: 0 0 10px 0;
+}
+
+.dataList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dataItem {
+  margin-bottom: 4px;
+}
+
+.details {
+  white-space: pre-wrap;
+  font-size: 14px;
+  color: #444;
+}
+
+.status {
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.rejected {
+  background-color: #e74c3c;
+}
+
+.completed {
+  background-color: #2ecc71;
+}
+
+.inProgress {
+  background-color: #dbc834;
+}
+
+.new {
+  background-color: #2e8acc;
+}
+
+.review {
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 4px;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.reviewForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 60px;
+  font-size: 14px;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.statusSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.statusSelect {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}

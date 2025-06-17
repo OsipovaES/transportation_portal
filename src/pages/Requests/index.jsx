@@ -1,71 +1,65 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Layout } from "../../components/layout";
-import { Card } from "../../components/Card";
-import { useNavigate } from "react-router-dom";
+import { RequestCard } from "../../components/RequestCard";
+import styles from "./requests.module.css";
 
 export const Requests = () => {
-  const navigate = useNavigate();
-  const handleCreateRequest = () => {
-    navigate("/create-request");
-  };
-
   const [requestsData, setRequestsData] = useState([]);
 
-  useEffect(() => {
-    const fetchRequests = async () => {
-      try {
-        const response = await fetch("/api/requests");
-        if (!response.ok) {
-          throw new Error("Не удалось получить заявки");
-        }
-        const data = await response.json();
+  const fetchRequests = useCallback(async () => {
+    try {
+      const response = await fetch("/api/requests");
+      if (!response.ok) throw new Error("Не удалось получить заявки");
 
-        const formattedData = data.map((request) => ({
-          title: `Заявка №${request.id}`,
-          details: `Тип груза: ${request.cargo_type}\nМаршрут: ${request.pickup_address} → ${request.delivery_address}`,
-          data: [
-            {
-              label: "Дата и время",
-              value: request.desired_datetime
-                ? new Date(request.desired_datetime).toLocaleString("ru-RU")
-                : "Не указано",
-            },
-            {
-              label: "Вес",
-              value: `${request.cargo_weight} кг`,
-            },
-            {
-              label: "Габариты",
-              value: request.cargo_dimensions,
-            },
-          ],
-          status: request.status,
-        }));
+      const data = await response.json();
 
-        setRequestsData(formattedData);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
+      const formattedData = data.map((request) => ({
+        id: request.id,
+        title: `Заявка №${request.id}`,
+        details: `Тип груза: ${request.cargo_type}\nМаршрут: ${request.pickup_address} → ${request.delivery_address}`,
+        data: [
+          {
+            label: "Дата и время",
+            value: request.desired_datetime
+              ? new Date(request.desired_datetime).toLocaleString("ru-RU")
+              : "Не указано",
+          },
+          {
+            label: "Вес",
+            value: `${request.cargo_weight || "Не указано"} кг`,
+          },
+          {
+            label: "Габариты",
+            value: request.cargo_dimensions || "Не указано",
+          },
+        ],
+        status: request.status,
+        review: request.review,
+      }));
 
-    fetchRequests();
+      setRequestsData(formattedData);
+    } catch (error) {
+      console.error("Ошибка загрузки заявок:", error.message);
+    }
   }, []);
+
+  useEffect(() => {
+    fetchRequests();
+  }, [fetchRequests]);
 
   return (
     <Layout title="История заявок">
-      <div>
-        <Card
-          title="Понравились наши услуги?"
-          buttonText="Создать новую заявку"
-          onButtonClick={handleCreateRequest}
-        />
-        {requestsData.map((request, index) => (
-          <Card
-            key={index}
+      <div className={styles.cardsContainer}>
+        {requestsData.map((request) => (
+          <RequestCard
+            key={request.id}
+            id={request.id}
             title={request.title}
             details={request.details}
             data={request.data}
             status={request.status}
+            review={request.review}
+            onReviewSubmit={fetchRequests}
           />
         ))}
       </div>

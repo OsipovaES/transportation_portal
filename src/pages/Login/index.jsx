@@ -74,6 +74,7 @@ export const Login = () => {
       }
     } catch (error) {
       console.log(error);
+      alert("Ошибка сервера. Проверьте ваш логин и пароль!");
       setErrors({ form: "Ошибка сервера. Попробуйте позже." });
     }
   };

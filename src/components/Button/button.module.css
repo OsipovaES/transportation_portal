@@ -1,5 +1,5 @@
 .button {
-  background-color: #4a90e2;
+  background-color: #f2994a; /* мягкий оранжево-янтарный */
   color: #fff;
   font-size: 15px;
   padding: 10px 18px;
@@ -7,16 +7,16 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.1s ease;
-  box-shadow: 0 2px 6px rgba(74, 144, 226, 0.2);
 }
 
 .button:hover {
-  background-color: #3a7fd3;
+  background-color: #eb8f35; /* чуть темнее на hover */
   transform: translateY(-1px);
 }
 
 .button:disabled {
-  background-color: #cfd8dc;
+  background-color: #e0e0e0;
+  color: #888;
   cursor: not-allowed;
   box-shadow: none;
 }

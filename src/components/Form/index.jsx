@@ -34,8 +34,8 @@ export const Form = ({
             <select
               id={select.name}
               name={select.name}
-              value={select.value} // <--- тут value из пропсов
-              onChange={select.onChange} // <--- и onChange из пропсов
+              value={select.value}
+              onChange={select.onChange}
               className={styles.select}
             >
               <option value="" disabled>

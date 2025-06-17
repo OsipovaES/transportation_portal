@@ -5,7 +5,9 @@ import styles from "./header.module.css";
 export const Header = () => {
   const navigate = useNavigate();
 
-  const isAuth = Boolean(localStorage.getItem("access_token"));
+  const accessToken = localStorage.getItem("access_token");
+  const role = localStorage.getItem("role");
+  const isAuth = Boolean(accessToken);
 
   const handleNavigateToRegistration = () => {
     navigate("/");
@@ -23,24 +25,27 @@ export const Header = () => {
     navigate("/create-request");
   };
 
+  const handleNavigateToAdminPanel = () => {
+    navigate("/admin-panel");
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("access_token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("role");
     navigate("/");
   };
 
   return (
     <header className={styles.head}>
-      <div onClick={handleNavigateToRegistration} className={styles.logo}>
-        <img
-          src="/logo.svg"
-          alt="Система учета медицинских данных пациентов"
-          className={styles.logoImg}
-        />
+      <div
+        onClick={handleNavigateToRegistration}
+        className={styles.logo}
+        style={{ cursor: "pointer" }}
+      >
         <div>
-          <h1 className={styles.logoText}>MedTrack</h1>
-          <p className={styles.subtitle}>
-            система учета медицинских данных пациентов
-          </p>
+          <h1 className={styles.logoText}>Грузы</h1>
+          <p className={styles.subtitle}>грузоперевозки</p>
         </div>
       </div>
 
@@ -49,6 +54,11 @@ export const Header = () => {
           <>
             <Button onClick={handleNavigateToRequests}>Все заявки</Button>
             <Button onClick={handleNavigateToCreate}>Создать заявку</Button>
+            {role === "admin" && (
+              <Button onClick={handleNavigateToAdminPanel}>
+                Панель администратора
+              </Button>
+            )}
             <Button onClick={handleLogout}>Выйти</Button>
           </>
         ) : (

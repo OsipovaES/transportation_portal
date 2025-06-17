@@ -61,13 +61,47 @@ const createRequest = async ({
 
 // Получение всех заявок
 const getAllRequests = async () => {
-  const result = await pool.query(
-    `SELECT id, user_id, desired_datetime, cargo_weight, cargo_dimensions,
-            pickup_address, delivery_address, cargo_type, status
-     FROM requests`
-  );
+  const result = await pool.query(`SELECT * FROM requests`);
 
   return result.rows;
 };
 
-export { registerUser, findUserByUsername, createRequest, getAllRequests };
+// Добавление отзыва к заявке
+const addReviewToRequest = async (requestId, review) => {
+  const result = await pool.query(
+    `UPDATE requests SET review = $1 WHERE id = $2 RETURNING *`,
+    [review, requestId]
+  );
+
+  return result.rows[0];
+};
+
+// Обновление статуса заявки
+const updateRequestStatus = async (requestId, status) => {
+  const result = await pool.query(
+    `UPDATE requests SET status = $1 WHERE id = $2 RETURNING *`,
+    [status, requestId]
+  );
+
+  return result.rows[0];
+};
+
+// Удаление заявки
+const deleteRequest = async (requestId) => {
+  const result = await pool.query(
+    `DELETE FROM requests WHERE id = $1 RETURNING *`,
+    [requestId]
+  );
+
+  return result.rows[0];
+};
+
+export {
+  registerUser,
+  findUserByUsername,
+  createRequest,
+  getAllRequests,
+  addReviewToRequest,
+  updateRequestStatus,
+  deleteRequest,
+};
