@@ -1,0 +1,37 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  background: #fdfefe;
+  border-radius: 16px;
+  width: 400px;
+  margin: 32px auto;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0f2f1;
+  transition: box-shadow 0.3s ease;
+}
+
+.form:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.description {
+  font-size: 15px;
+  color: #4a4a4a;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.errorMessage {
+  color: #e53935;
+  font-size: 12px;
+  margin-top: -6px;
+}
+
+@media (max-width: 570px) {
+  .form {
+    width: 90%;
+    padding: 20px 12px;
+  }
+}

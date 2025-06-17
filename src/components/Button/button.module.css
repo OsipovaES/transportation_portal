@@ -1,0 +1,22 @@
+.button {
+  background-color: #4a90e2;
+  color: #fff;
+  font-size: 15px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  box-shadow: 0 2px 6px rgba(74, 144, 226, 0.2);
+}
+
+.button:hover {
+  background-color: #3a7fd3;
+  transform: translateY(-1px);
+}
+
+.button:disabled {
+  background-color: #cfd8dc;
+  cursor: not-allowed;
+  box-shadow: none;
+}

@@ -1,0 +1,62 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: auto;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.dataList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px;
+}
+
+.dataItem {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.details {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.status {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.rejected {
+  background-color: #e74c3c;
+}
+
+.completed {
+  background-color: #2ecc71;
+}
+
+.inProgress {
+  background-color: #3498db;
+}
+
+.defaultStatus {
+  background-color: #95a5a6;
+}

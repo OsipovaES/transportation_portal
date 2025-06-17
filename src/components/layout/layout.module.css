@@ -1,0 +1,19 @@
+.layoutContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #f7fbfc;
+}
+
+.layoutTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2f4f4f;
+  margin-bottom: 24px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin: 0;
+}

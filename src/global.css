@@ -1,0 +1,14 @@
+html,
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: "Verdana", sans-serif;
+  background-color: #f4f4f4;
+  max-width: 1920px;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
