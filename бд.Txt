@@ -1,0 +1,26 @@
+CREATE TABLE requests (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    desired_datetime TIMESTAMP NOT NULL,
+    cargo_weight DECIMAL(10, 2) NOT NULL,
+    cargo_dimensions VARCHAR(100) NOT NULL,
+    pickup_address TEXT NOT NULL,
+    delivery_address TEXT NOT NULL,
+    cargo_type VARCHAR(50) NOT NULL,
+    status VARCHAR(30) NOT NULL,
+    CONSTRAINT fk_user
+      FOREIGN KEY(user_id) 
+      REFERENCES users(id)
+      ON DELETE CASCADE
+);
+
+CREATE TABLE users (
+    id serial4 PRIMARY KEY,
+    name varchar(255) NOT NULL,
+    phone varchar(20) NOT NULL,
+    email varchar(255) NOT NULL,
+    username varchar(50) NOT NULL,
+    password_hash text NOT NULL,
+    created_at timestamp DEFAULT CURRENT_TIMESTAMP,
+    role varchar(50) NOT NULL DEFAULT 'user'
+);
